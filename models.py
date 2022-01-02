@@ -188,3 +188,19 @@ class VQ_VAE(nn.Module):
 
         return loss, x_recon, perplexity
 
+    # Utilizing functions
+    def get_latent_z(self, input):
+        """
+        input: (B, C, W, H) size of img
+        """
+        encoder_out = self._pre_vq_conv(self._encoder(input))
+        loss, quantized_z, perplexity, _ = self._vq_vae(encoder_out)
+        return loss, quantized_z, perplexity
+
+    def get_recon_from_z(self, input):
+        """
+        input: (B, embedding_dim, resized_W, resized_H) size of latent z
+        (e.g.) 128x128 img with 16 of embedding_dim -> should have (B, 16, 32, 32) size of latent z
+        """
+        reconstruction = self._decoder(input)
+        return reconstruction
