@@ -28,7 +28,6 @@ with open(csv_path, 'w', encoding='UTF8') as c:
     for idx in range(total_data_num):
         # iteration checking
         if (idx+1) % 3000 == 0:
-            break
             print("Downloaing...", int(idx/total_data_num*100), "%")
             
         album = amazon_meta.iloc[idx]
