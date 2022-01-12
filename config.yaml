@@ -1,0 +1,8 @@
+num_hiddens: 256  # [128, 256]
+num_residual_hiddens: 128 # [128, 256]
+num_residual_layers: 2 # [2]
+embedding_dim: 64 # [16, 32, 64]
+num_embeddings: 512 # [128, 256, 512] paper: 512 for ImageNet data
+
+commitment_cost: 0.25
+decay: 0.99
